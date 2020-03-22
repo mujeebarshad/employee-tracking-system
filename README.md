@@ -1,4 +1,4 @@
-Employee Tracking System
+#Employee Tracking System
 
 An administrator manages multiple departments/teams. Each Team has Team Lead and the number of team members. (We can have sub-teams)
 
