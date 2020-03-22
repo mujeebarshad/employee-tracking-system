@@ -1,0 +1,55 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'sidebar' %>
+<% end %>
+
+<% @sidebar_data = generate_sidebar_options %>
+
+<nav id="sidebar">
+
+  <ul class="list-unstyled sidenav-menu components">
+
+    <% @sidebar_data.each do |sidebar_option| %>
+      <% if sidebar_option.key?(:suboptions) %>
+        <li id="<%=sidebar_option[:id]%>">
+          <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle d-flex align-items-center" href=<%= "#"+sidebar_option[:submenu_id] %>>
+            <i class="<%=sidebar_option[:icon]%>"></i>
+            <span class="sidebar-option"><%= sidebar_option[:name] %></span>
+          </a>
+          <!-- sub - options -->
+          <ul class="collapse list-unstyled" id=<%= sidebar_option[:submenu_id] %>>
+            <% sidebar_option[:suboptions].each do |sub_option|%>
+              <li>
+                <a href=<%= sub_option[:link] %>>
+                  <i class="<%=sub_option[:icon]%>"></i>
+                  <%= sub_option[:name] %>
+                </a>
+              </li>
+            <%end%>
+          </ul>
+        </lti>
+      <% else %>
+        <li id="<%=sidebar_option[:id]%>">
+          <a class="d-flex align-items-center" href=<%= sidebar_option[:link] %>>
+            <i class="<%= sidebar_option[:icon] %>"></i>
+            <span class="sidebar-option"><%= sidebar_option[:name] %></span>
+          </a>
+        </li>
+      <% end %>
+
+    <% end %>
+
+    <hr class="sidebar-divider">
+
+    <% @sidebar_footer_data = generate_sidebar_foot_options %>
+
+    <% @sidebar_footer_data.each do |sidebar_footer_option| %>
+      <li id="<%=sidebar_footer_option[:id]%>">
+        <a class="d-flex align-items-center" href=<%= sidebar_footer_option[:link] %>>
+          <i class="<%= sidebar_footer_option[:icon] %>"></i>
+          <span class="sidebar-option"><%= sidebar_footer_option[:name] %></span>
+        </a>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>

@@ -1,0 +1,9 @@
+<% if @attendance.logout_time.blank? %>
+  $('#notifications-flash').append("<%= j render(:partial => 'shared/notification') %>");
+<% else %>
+  var present_marked_btn = document.getElementsByClassName("update_attendance");;
+  present_marked_btn[0].style.display = "none";
+  
+  setTimeout(function(){location.reload()}, 3000);
+
+<% end %>
