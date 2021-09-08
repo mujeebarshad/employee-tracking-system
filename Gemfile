@@ -30,7 +30,7 @@ gem 'will_paginate-bootstrap4', '0.2.2'
 gem 'wkhtmltopdf-binary', '0.12.4'
 
 group :development, :test do
-  gem 'better_errors', '2.5.1'
+  gem 'better_errors', '2.8.0'
   gem 'capybara', '2.18.0'
   gem 'clockwork', '2.0.4'
   gem 'database_cleaner', '1.7.0'
